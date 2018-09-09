@@ -8,12 +8,12 @@ float playerY;
 void setup(){
   size(500,750);
   background(#56adef);
-  bird = loadImage("Bird 1.png");
+  bird = loadImage("Bird1.png");
   
-  playerX = 200;
-  playerY = 500;
-  playerHeight = 150;
-  playerWidth = 30;
+  playerX = 100;
+  playerY = 100;
+  playerHeight = 10;
+  playerWidth = 10;
 }
 
 void draw(){

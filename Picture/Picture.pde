@@ -19,6 +19,7 @@ void setup(){
 void draw(){
   //bird
   image(bird, playerX, playerY);
+  resize(playerHeight, playerWidth);
   //grass
   fill(#2bef4b);
   rect(0,500,750,750);

@@ -1,8 +1,8 @@
 //ball
 int xPos = 500;
 int yPos = 350;
-int xDir;
-int yDir;
+int xDir = 5;
+int yDir = 5;
 int ballHeight = 80;
 int ballWidth = 80;
 

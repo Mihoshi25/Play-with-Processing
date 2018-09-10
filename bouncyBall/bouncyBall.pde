@@ -15,8 +15,8 @@ void draw(){
   noStroke();
   background(0);
   ellipse(xPos, yPos, ballHeight, ballWidth);
-  xPos=xPos+1;
-  if (xPos>width+20)
-  {xPos=-20;
+  xPos=xPos+xDir;
+  if (xPos>width-40 || xPos<40)
+  {xDir=-xDir;
   }
 }

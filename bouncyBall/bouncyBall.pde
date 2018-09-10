@@ -19,4 +19,8 @@ void draw(){
   if (xPos>width-40 || xPos<40)
   {xDir=-xDir;
   }
+  yPos=yPos+yDir;
+  if (yPos>height-40 || yPos<40)
+  {yDir=-yDir;
+  }
 }

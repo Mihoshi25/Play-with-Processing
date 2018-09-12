@@ -23,14 +23,14 @@ void draw(){
   yPos = yPos + yDir;
   if (yPos > height-40 || yPos<40)
   {
-    yDir=-yDir;
+    yDir = -yDir;
   }
  }
   
 void mousePressed(){
   if (dist(xPos, yPos, mouseX, mouseY) <= 40)
   {
-    xDir=-xDir;
-    yDir=-yDir;
+    xDir = -yDir;
+    yDir = -xDir;
   }
 }

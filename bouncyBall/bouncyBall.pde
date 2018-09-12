@@ -30,7 +30,7 @@ void draw(){
 void mousePressed(){
   if (dist(xPos, yPos, mouseX, mouseY) <= 40)
   {
-    xPos=-xPos;
-    yPos=-yPos;
+    xDir=-xDir;
+    yDir=-yDir;
   }
 }

@@ -23,4 +23,11 @@ void draw(){
   if (yPos>height-40 || yPos<40)
   {yDir=-yDir;
   }
+ }
+  
+void mousePressed(){
+  if (dist(xPos, yPos, mouseX, mouseY)<=40)
+  {xPos=-xPos;
+   yPos=-yPos;
+  }
 }

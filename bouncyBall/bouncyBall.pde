@@ -33,4 +33,8 @@ void mousePressed(){
     xDir = -yDir;
     yDir = -xDir;
   }
+  if (mouseX > 400)
+  {
+    background(0, 255, 0);
+  }
 }

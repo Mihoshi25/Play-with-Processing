@@ -16,12 +16,12 @@ void draw(){
   background(0);
   ellipse(xPos, yPos, ballHeight, ballWidth);
   xPos = xPos + xDir;
-  if (xPos > width - 40 || xPos < 40)
+  if (xPos > width - ballWidth/2 || xPos < ballWidth/2)
   {
     xDir = -xDir;
   }
   yPos = yPos + yDir;
-  if (yPos > height-40 || yPos<40)
+  if (yPos > height - ballHeight/2 || yPos < ballHeight/2)
   {
     yDir = -yDir;
   }

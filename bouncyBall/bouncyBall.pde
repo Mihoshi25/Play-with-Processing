@@ -28,7 +28,7 @@ void draw(){
  }
   
 void mousePressed(){
-  if (dist(xPos, yPos, mouseX, mouseY) <= 40)
+  if (dist(xPos, yPos, mouseX, mouseY) <= 80)
   {
     xDir = -yDir;
     yDir = -xDir;

@@ -1,0 +1,31 @@
+class PelletClass
+{
+  // Fields
+  int pelletX;
+  int pelletY;
+  int peldia = 10;
+  boolean collision = false;
+
+  // Constructor
+  PelletClass(int pelletX, int pelletY)
+  {
+    this.pelletX = pelletX;
+    this.pelletY = pelletY;
+  }
+
+  // Methods
+  void drawPellet()
+  {
+    fill(#FAFF00);
+    ellipse(pelletX, pelletY, peldia, peldia);
+  }
+  void hitPellet()
+  {
+    if((dist(pelletX, pelletY, player.playerX, player.playerY) <= peldia/2+player.pladia/2) && (collision == false))
+    {
+      score.play();
+      points = points+1;
+      collision = true;
+    }
+  }
+}

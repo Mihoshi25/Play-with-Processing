@@ -1,8 +1,9 @@
 PlayerClass player;
+CellClass Cell;
 int row;
 int collumn;
 int w = 30;
-int[] grid = new int[];
+CellClass[] grid = new CellClass[collumn+row];
 
 
 void setup()

@@ -27,7 +27,7 @@ class PlayerClass
       // c.w 
       if (c.walls[0])
       {
-        if ((playerX-11 >= c.i) && (playerX+11 <= c.i))
+        if ((dist(playerX-11,playerY-11, c.i, c.i)) <= pladia)
         {
           speed = 0;
           collision.play();
@@ -35,7 +35,7 @@ class PlayerClass
       }
       if (c.walls[1])
       {
-        if ((playerX-11 >= c.i+w) && (playerX+11 <= c.i+w))
+        if ((dist(playerX-11,playerY-11, c.i+w, c.i+w)) <= pladia)
         {
           speed = 0;
           collision.play();
@@ -43,7 +43,7 @@ class PlayerClass
       }
       if (c.walls[2])
       {
-        if ((playerX-11 >= c.i+w) && (playerX+11 <= c.i))
+        if ((dist(playerX-11,playerY-11, c.i+w, c.i)) <= pladia)
         {
           speed = 0;
           collision.play();
@@ -51,7 +51,7 @@ class PlayerClass
       }
       if (c.walls[3])
       {
-        if ((playerX-11 >= c.i) && (playerX+11 <= c.i))
+        if ((dist(playerX-11,playerY-11, c.i, c.i+w)) <= pladia)
         {
           speed = 0;
           collision.play();

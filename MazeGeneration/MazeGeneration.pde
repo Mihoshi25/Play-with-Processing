@@ -61,7 +61,7 @@ void draw()
   background(51);
 
   player.drawPlayer();
-  player.hasCollidedWithWall(5, 5);
+  player.hasCollidedWithWall();
 
   for (int i = 0; i < pellets.length; i++)
   {

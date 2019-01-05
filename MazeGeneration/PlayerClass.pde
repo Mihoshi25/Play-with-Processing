@@ -26,7 +26,7 @@ class PlayerClass
   }
 
 
-  void hasCollidedWithWall(int playerX, int playerY)
+  void hasCollidedWithWall()
   {
 
     for (int i = 0; i<grid.size(); i++)
@@ -40,8 +40,9 @@ class PlayerClass
       {
         if (circleRectangleCollision(playerX, playerY, pladia/2, c.j, c.i, w, b))
         {
-          speed = 0;
+          //speed = 0;
           collision.play();
+          println(playerX);
         }
       }
       /*if (c.walls[1])

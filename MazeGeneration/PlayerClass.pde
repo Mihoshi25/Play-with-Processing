@@ -5,6 +5,7 @@ class PlayerClass
   int playerY = height-15;
   int speed = 5;
   int pladia = 20;
+  int b = 1;
 
   // Constructor
   PlayerClass()
@@ -16,14 +17,14 @@ class PlayerClass
     fill(255, 0, 0);
     ellipse(playerX, playerY, pladia, pladia);
   }
-  /*
-  boolean circleRectangleCollision(float cX,float cY, float cR, float rX,float rY,float rW,float rH)
-   {
-   float deltaX = cX - max(rX, min(cX, rX + rW));
-   float deltaY = cY - max(rY, min(cY, rY + rH));
-   return (deltaX  * deltaX + deltaY * deltaY) < (cR * cR);
-   }
-   */
+
+  boolean circleRectangleCollision(float playerX, float playerY, float pladia/2, float c.j, float c.i, float c.j+w, float c.i+w)
+  {
+    float deltaX = playerX - max(playerX, min(c.j, c.j + w));
+    float deltaY = playerY - max(playerY, min(c.i, c.i + 1));
+    return (deltaX  * deltaX + deltaY * deltaY) < (pladia/2 * pladia/1);
+  }
+
 
   void hasCollidedWithWall(int playerX, int playerY)
   {
@@ -35,12 +36,12 @@ class PlayerClass
       // c.i
       // c.j
       // c.w 
-      if (circleRectangleCollision(float playerX, float layerY, float pladia/2, float c.j, float c.i, float c.j+w, float c.i+1))
+      if (c.walls[0])
       {
+        if (circleRectangleCollision(playerX, playerY, pladia/2, c.j, c.i, c.j+w, c.i+b))
         {
-          float deltaX = playerX - max(c.j, min(playerX, c.j + c.j+w));
-          float deltaY = playerY - max(c.i, min(playerY, c.i + 1));
-          return (deltaX  * deltaX + deltaY * deltaY) < (pladia/2 * pladia/2);
+          speed = 0;
+          collision.play();
         }
       }
       if (c.walls[1])

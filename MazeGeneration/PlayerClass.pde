@@ -35,9 +35,8 @@ class PlayerClass
       // c.i
       // c.j
       // c.w 
-      if (c.walls[0])
+      if (circleRectangleCollision(float playerX, float layerY, float pladia/2, float c.j, float c.i, float c.j+w, float c.i+1))
       {
-        boolean circleRectangleCollision(float playerX, float layerY, float pladia/2, float c.j, float c.i, float c.j+w, float c.i+1)
         {
           float deltaX = playerX - max(c.j, min(playerX, c.j + c.j+w));
           float deltaY = playerY - max(c.i, min(playerY, c.i + 1));

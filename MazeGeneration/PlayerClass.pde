@@ -38,7 +38,7 @@ class PlayerClass
       // c.w 
       if (c.walls[0])
       {
-        if (circleRectangleCollision(playerX, playerY, pladia/2, c.j, c.i, c.j+w, c.i+b))
+        if (circleRectangleCollision(playerX, playerY, pladia/2, c.j, c.i, w, b))
         {
           speed = 0;
           collision.play();
@@ -46,7 +46,7 @@ class PlayerClass
       }
       if (c.walls[1])
       {
-        if (circleRectangleCollision(playerX, playerY, pladia/2, c.i, c.j, c.j+b, c.i+w))
+        if (circleRectangleCollision(playerX, playerY, pladia/2, c.i, c.j, b, w))
         {
           speed = 0;
           collision.play();
@@ -54,7 +54,7 @@ class PlayerClass
       }
       if (c.walls[2])
       {
-        if (circleRectangleCollision(playerX, playerY, pladia/2, c.j, c.i, c.j-w, c.i-b))
+        if (circleRectangleCollision(playerX, playerY, pladia/2, c.j, c.i, -w, -b))
         {
           speed = 0;
           collision.play();
@@ -62,7 +62,7 @@ class PlayerClass
       }
       if (c.walls[3])
       {
-        if (circleRectangleCollision(playerX, playerY, pladia/2, c.i, c.j, c.j-b, c.i-w))
+        if (circleRectangleCollision(playerX, playerY, pladia/2, c.i, c.j, -b, -w))
         {
           speed = 0;
           collision.play();

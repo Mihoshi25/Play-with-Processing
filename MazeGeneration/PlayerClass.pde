@@ -20,8 +20,8 @@ class PlayerClass
 
   boolean circleRectangleCollision(float playerX, float playerY, float plarad, float wX, float wY, float wWidth, float wHeight)
   {
-    float deltaX = playerX - max(playerX, min(wX, wX + wWidth));
-    float deltaY = playerY - max(playerY, min(wY, wY + wHeight));
+    float deltaX = playerX - max(wX, min(playerX, wX + wWidth));
+    float deltaY = playerY - max(wY, min(playerY, wY + wHeight));
     return (deltaX  * deltaX + deltaY * deltaY) < (plarad * plarad);
   }
 
@@ -44,7 +44,7 @@ class PlayerClass
           collision.play();
         }
       }
-      if (c.walls[1])
+      /*if (c.walls[1])
       {
         if (circleRectangleCollision(playerX, playerY, pladia/2, c.i, c.j, b, w))
         {
@@ -67,7 +67,7 @@ class PlayerClass
           speed = 0;
           collision.play();
         }
-      }
+      }*/
     }
   }
 }

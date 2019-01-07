@@ -1,35 +1,40 @@
-// Variables
+// Importing sound library
 import processing.sound.*;
 PlayerClass player;
+// Declaring and initializing variables
 int cols, rows;
 int w = 30;
 int points = 0;
 Cell current;
+// Soundfiles
 SoundFile collision;
 SoundFile win;
 SoundFile score;
 
-// Setting up arraylists
+// Declaring arraylists
 ArrayList<Cell> grid;
 ArrayList<Cell> stack;
 
-// Setting up array
+// Declaring array
 PelletClass[] pellets;
 
 // Setup block
 void setup() 
 {
   size(1500, 900);
+  // Initializing PlayerClass
   player = new PlayerClass();
+  // Instantiating PelletClass as an array of four elements with four set positions
   pellets = new PelletClass[4];
   pellets[0] = new PelletClass(15, 15);
   pellets[1] = new PelletClass(15, height-15);
   pellets[2] = new PelletClass(width-15, height-15);
   pellets[3] = new PelletClass(width-15, 15);
+  // Declaring the variables grid and stack
   grid = new ArrayList<Cell>();
   stack = new ArrayList<Cell>();
-  
-  // Setting the amount of rows and columns in the grid based on w
+
+  // Initializing rows and columns in the grid based on w, which is the width and height of each cell
   cols = floor(width/w);
   rows = floor(height/w);
   // Giving the top right coordinate for each cell
@@ -41,7 +46,7 @@ void setup()
       grid.add(cell);
     }
   }
-  // Setting the cell we start in to be the first cell in the grid
+  // Setting the top right cell to be the first cell in the grid
   current = grid.get(0);
   // While the stack is not empty, keep moving to a new cell
   step();
@@ -49,9 +54,9 @@ void setup()
   {
     step();
   }
+  // Adding soundfiles
   collision = new SoundFile(this, "Impact.wav");
   win = new SoundFile(this, "Win.wav");
-  win.play();
   score = new SoundFile(this, "Score.wav");
 }
 
@@ -59,10 +64,11 @@ void setup()
 void draw() 
 {
   background(51);
-
+  // Calling method(s) in the PlayerClass
   player.drawPlayer();
-  player.hasCollidedWithWall();
+  //player.hasCollidedWithWall();
 
+  // Adding pellets by calling pellet methods
   for (int i = 0; i < pellets.length; i++)
   {
     PelletClass pellet = pellets[i];
@@ -78,9 +84,11 @@ void draw()
   {
     grid.get(i).show();
   }
+  // Adding the score
   fill(0, 0, 150);
   textSize(50);
   text("score = " + points, 5, 40);
+  // Calling checkState at the end of Draw
   checkState();
 }
 
@@ -150,7 +158,7 @@ void removeWalls(Cell a, Cell b)
     b.walls[0] = false;
   }
 }
-
+// Move controls
 void keyPressed()
 {
   switch(key)
@@ -169,15 +177,16 @@ void keyPressed()
     break;
   }
 }
-
+// Checks if there are any pellets left. If there are none, the program plays Win and reruns Setup
 void checkState()
 {
   for (int i = 0; i < pellets.length; i++)
   {
-    if(pellets[i].collision == false)
+    if (pellets[i].collision == false)
     {
       return;
-    }   
+    }
   }
+  win.play();
   setup();
 }

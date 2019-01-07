@@ -12,12 +12,14 @@ class PlayerClass
   {
   }
   // Methods
+  // Method for drawing the player
   void drawPlayer()
   {
     fill(255, 0, 0);
     ellipse(playerX, playerY, pladia, pladia);
   }
-
+  // Attempt at wall collision
+  /*
   boolean circleRectangleCollision(float playerX, float playerY, float plarad, float wX, float wY, float wWidth, float wHeight)
   {
     float deltaX = playerX - max(wX, min(playerX, wX + wWidth));
@@ -40,12 +42,12 @@ class PlayerClass
       {
         if (circleRectangleCollision(playerX, playerY, pladia/2, c.j, c.i, w, b))
         {
-          //speed = 0;
+          speed = 0;
           collision.play();
           println(playerX);
         }
       }
-      /*if (c.walls[1])
+      if (c.walls[1])
       {
         if (circleRectangleCollision(playerX, playerY, pladia/2, c.i, c.j, b, w))
         {
@@ -68,7 +70,7 @@ class PlayerClass
           speed = 0;
           collision.play();
         }
-      }*/
+      }
     }
-  }
+  }*/
 }

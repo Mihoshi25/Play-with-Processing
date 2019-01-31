@@ -19,12 +19,12 @@ class Cell
   Cell checkNeighbors() 
   {
     ArrayList<Cell> neighbors = new ArrayList<Cell>();
-
+    // Give directions to neighboring cells
     Cell top    = grid.get(index(i, j-1));
     Cell right  = grid.get(index(i+1, j));
     Cell bottom = grid.get(index(i, j+1));
     Cell left   = grid.get(index(i-1, j));
-
+    // If said neighbor cell has not been visited, add it to cells that can be visited
     if (top != null && !top.visited) {
       neighbors.add(top);
     }
@@ -40,7 +40,7 @@ class Cell
     {
       neighbors.add(left);
     }
-
+    // If any neighbors are available, visit a random one of these
     if (neighbors.size() > 0) 
     {
       int r = floor(random(0, neighbors.size()));

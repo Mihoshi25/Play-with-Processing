@@ -124,6 +124,7 @@ void step()
   }
 }
 
+// Navigate between the cells and secure for going out of bounds
 int index(int i, int j) 
 {
   if (i < 0 || j < 0 || i > cols-1 || j > rows-1) 

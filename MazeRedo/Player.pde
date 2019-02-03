@@ -32,10 +32,10 @@ class Player
     {       
       int rectCenterX = wall.posX + wall.w / 2;
       int rectCenterY = wall.posY + wall.h / 2;
-      
+
       int diffX = rectCenterX - playerX;
       int diffY = rectCenterY - playerY;
-      
+
       if (rectCenterX < playerX && diffX > diffY)
       {
         // Player is to the right of the middle, so move him right

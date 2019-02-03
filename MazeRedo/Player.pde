@@ -30,27 +30,28 @@ class Player
       wall.posY + wall.h >= playerY - pladia/2 &&
       wall.posY <= playerY + pladia/2)         
     {       
-      float rectCenterX = wall.posX + wall.w / 2;
-      float rectCenterY = wall.posY + wall.h / 2;
-      if (rectCenterX < playerX)
+      int rectCenterX = wall.posX + wall.w / 2;
+      int rectCenterY = wall.posY + wall.h / 2;
+      
+      int diffX = rectCenterX - playerX;
+      int diffY = rectCenterY - playerY;
+      
+      if (rectCenterX < playerX && diffX > diffY)
       {
         // Player is to the right of the middle, so move him right
         collision.play();
         playerX += bounce;
-      }
-      else if (rectCenterX > playerX)
+      } else if (rectCenterX > playerX && diffX > diffY)
       {
         // Player is to the left of the middle, so move him left
         collision.play();
         playerX -= bounce;
-      }
-      else if (rectCenterY < playerY)
+      } else if (rectCenterY < playerY && diffX < diffY)
       {
         // Player is to the below of the middle, so move him down
         collision.play();
         playerY += bounce;
-      }
-      else if (rectCenterY > playerY)
+      } else if (rectCenterY > playerY && diffX < diffY)
       {
         // Player is to the above of the middle, so move him up
         collision.play();

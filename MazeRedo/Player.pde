@@ -32,31 +32,48 @@ class Player
     {       
       int rectCenterX = wall.posX + wall.w / 2;
       int rectCenterY = wall.posY + wall.h / 2;
+      
+      // Get the diffs from the center of the player to the center of the wall
+      int diffX = playerX - rectCenterX;
+      int diffY = playerY - rectCenterY;
 
-      int diffX = rectCenterX - playerX;
-      int diffY = rectCenterY - playerY;
-
-      if (rectCenterX < playerX && diffX > diffY)
+      // We're deeper in X, so move on Y
+      if (abs(diffX) < abs(diffY))
       {
-        // Player is to the right of the middle, so move him right
-        collision.play();
-        playerX += bounce;
-      } else if (rectCenterX > playerX && diffX > diffY)
+        // Make it so that if we're above the center of the wall, move us up.
+        int negator = diffY > 0 ? 1 : -1; 
+        playerY = (wall.posY + wall.h  * negator);
+      }
+      // We're deeper in Y, so move on X
+      else
       {
-        // Player is to the left of the middle, so move him left
-        collision.play();
-        playerX -= bounce;
-      } else if (rectCenterY < playerY && diffX < diffY)
-      {
-        // Player is to the below of the middle, so move him down
-        collision.play();
-        playerY += bounce;
-      } else if (rectCenterY > playerY && diffX < diffY)
-      {
-        // Player is to the above of the middle, so move him up
-        collision.play();
-        playerY -= bounce;
+        // Make it so that if we're left of the center, move us left.
+        int negator = diffX > 0 ? 1 : -1; 
+        playerX = (wall.posX + wall.w  * negator);
       }
     }
+
+
+    /*if (rectCenterX < playerX && diffX > diffY)
+    {
+      // Player is to the right of the middle, so move him right
+      collision.play();
+      playerX += bounce;
+    } else if (rectCenterX > playerX && diffX > diffY)
+    {
+      // Player is to the left of the middle, so move him left
+      collision.play();
+      playerX -= bounce;
+    } else if (rectCenterY < playerY && diffX < diffY)
+    {
+      // Player is to the below of the middle, so move him down
+      collision.play();
+      playerY += bounce;
+    } else if (rectCenterY > playerY && diffX < diffY)
+    {
+      // Player is to the above of the middle, so move him up
+      collision.play();
+      playerY -= bounce;
+    }*/
   }
 }

@@ -59,7 +59,7 @@ class Player
         collision.play();
         playerX += bounce;
       }
-      if (rectCenterX < playerX)
+      if (rectCenterX > playerX)
       {
         // Player is to the left of the middle, so move him left
         collision.play();

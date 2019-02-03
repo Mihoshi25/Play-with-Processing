@@ -1,8 +1,9 @@
 class Player
 {
   // Fields
-  int playerX = width/2-15;
-  int playerY = height-15;
+  int offset = 15;
+  int playerX = width/2;
+  int playerY = height - offset;
   int speed = 5;
   int pladia = 20;
   int b = 1;
@@ -44,12 +45,33 @@ class Player
       playerY -= 15;
       collision.play();
     }
-    if (wall.posX + wall.w >= playerX &&     // r1 right edge past r2 left
-      wall.posX <= playerX + pladia &&       // r1 left edge past r2 right
-      wall.posY + wall.h >= playerY &&       // r1 top edge past r2 bottom
-      wall.posY <= playerY + pladia)         // r1 bottom edge past r2 top
+    /*if (wall.posX + wall.w >= playerX - pladia/2 &&
+      wall.posX <= playerX + pladia/2 &&
+      wall.posY + wall.h >= playerY - pladia/2 &&
+      wall.posY <= playerY + pladia/2)         
     {       
       collision.play();
+    }*/
+    
+     if (wall.posX + wall.w >= playerX - pladia/2)
+    {       
+      collision.play();
+      //playerX -= 15;
+    }
+    if (wall.posX <= playerX + pladia/2)
+    {       
+      collision.play();
+      //playerX -= 15;
+    }
+    if (wall.posY + wall.h >= playerY - pladia/2)
+    {       
+      collision.play();
+      //playerX -= 15;
+    }
+    if (wall.posY <= playerY + pladia/2)
+    {       
+      collision.play();
+      //playerX -= 15;
     }
   }
 }

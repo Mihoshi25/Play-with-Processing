@@ -63,14 +63,14 @@ class Player
       {
         // Make it so that if we're above the center of the wall, move us up.
         int negator = diffY > 0 ? 1 : -1; 
-        playerY = (rectCenterY + wall.h/2  * negator + (pladia/2) * negator);
+        playerY = rectCenterY + (wall.h/2  + pladia/2 + bounce)* negator;
       }
       // We're deeper in Y, so move on X
       else
       {
         // Make it so that if we're left of the center, move us left.
         int negator = diffX > 0 ? 1 : -1; 
-        playerX = (rectCenterX + wall.w/2  * negator + (pladia/2) * negator);
+        playerX = rectCenterX + (wall.w/2  + pladia/2 + bounce)* negator;
       }
     }
 

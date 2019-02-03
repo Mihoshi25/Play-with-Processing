@@ -1,11 +1,11 @@
 class Player
 {
   // Fields
-  int offset = 15;
   int playerX = width/2;
   int playerY = height - offset;
   int speed = 5;
   int pladia = 20;
+  int plarad = pladia/2;
   int b = 1;
   int bounce = 15;
 
@@ -20,23 +20,23 @@ class Player
     fill(255, 0, 0);
     ellipse(playerX, playerY, pladia, pladia);
     noFill();
-    rect(playerX-pladia/2, playerY-pladia/2, pladia, pladia);
+    //rect(playerX-pladia/2, playerY-pladia/2, pladia, pladia);
   }
-  // Attempt at wall collision
-  void wallCollider()
+  // Wall collision
+  void borderCollider()
   {
-    if (playerX-pladia/2 <= 0) 
+    if (playerX-plarad <= 0) 
     {
       playerX += bounce;
       collision.play();
     }
-    if (playerX+pladia/2 >= width) 
+    if (playerX+plarad >= width) 
     {
       playerX -= bounce;
       collision.play();
     }
 
-    if (playerY-pladia/2 <= 0) 
+    if (playerY-plarad <= 0) 
     {
       playerY += bounce;
       collision.play();
@@ -46,55 +46,53 @@ class Player
       playerY -= bounce;
       collision.play();
     }
-    if (wall.posX + wall.w >= playerX - pladia/2 &&
-      wall.posX <= playerX + pladia/2 &&
-      wall.posY + wall.h >= playerY - pladia/2 &&
-      wall.posY <= playerY + pladia/2)         
-    {       
-      int rectCenterX = wall.posX + wall.w / 2;
-      int rectCenterY = wall.posY + wall.h / 2;
-      
-      // Get the diffs from the center of the player to the center of the wall
-      int diffX = playerX - rectCenterX;
-      int diffY = playerY - rectCenterY;
-
-      // We're deeper in X, so move on Y
-      if (abs(diffX) < abs(diffY))
-      {
-        // Make it so that if we're above the center of the wall, move us up.
-        int negator = diffY > 0 ? 1 : -1; 
-        playerY = rectCenterY + (wall.h/2  + pladia/2 + bounce)* negator;
-      }
-      // We're deeper in Y, so move on X
-      else
-      {
-        // Make it so that if we're left of the center, move us left.
-        int negator = diffX > 0 ? 1 : -1; 
-        playerX = rectCenterX + (wall.w/2  + pladia/2 + bounce)* negator;
-      }
+  }
+  void moveLeft()
+  {
+    playerX = player.playerX - player.speed;
+    if (collidingWithWall())
+    {
+      playerX = wall.posX + wall.w + plarad + bounce;
+      collision.play();
     }
+  }
 
+  void moveRight()
+  {
+    playerX = player.playerX + player.speed;
+    if (collidingWithWall())
+    {
+      playerX = wall.posX - plarad - bounce;
+      collision.play();
+    }
+  }
 
-    /*if (rectCenterX < playerX && diffX > diffY)
+  void moveUp()
+  {
+    playerY -= player.speed;
+    if (collidingWithWall())
     {
-      // Player is to the right of the middle, so move him right
+      playerY = wall.posY + wall.h + plarad + bounce;
       collision.play();
-      playerX += bounce;
-    } else if (rectCenterX > playerX && diffX > diffY)
+    }
+  }
+
+  void moveDown()
+  {
+    playerY += player.speed;
+    if (collidingWithWall())
     {
-      // Player is to the left of the middle, so move him left
+      playerY = wall.posY - plarad - bounce;
       collision.play();
-      playerX -= bounce;
-    } else if (rectCenterY < playerY && diffX < diffY)
-    {
-      // Player is to the below of the middle, so move him down
-      collision.play();
-      playerY += bounce;
-    } else if (rectCenterY > playerY && diffX < diffY)
-    {
-      // Player is to the above of the middle, so move him up
-      collision.play();
-      playerY -= bounce;
-    }*/
+    }
+  }
+
+  boolean collidingWithWall()
+  {
+    return 
+      wall.posX + wall.w >= playerX - plarad &&
+      wall.posX          <= playerX + plarad &&
+      wall.posY + wall.h >= playerY - plarad &&
+      wall.posY          <= playerY + plarad;
   }
 }

@@ -6,6 +6,7 @@ Wall wall;
 int cols, rows;
 int w = 30;
 int points = 0;
+int offset = 15;
 // Soundfiles
 SoundFile collision;
 SoundFile win;
@@ -24,10 +25,10 @@ void setup()
   wall = new Wall();
   // Instantiating Pellet as an array of four elements with four set positions
   pellets = new Pellet[4];
-  pellets[0] = new Pellet(15, 15);
-  pellets[1] = new Pellet(15, height-15);
-  pellets[2] = new Pellet(width-15, height-15);
-  pellets[3] = new Pellet(width-15, 15);
+  pellets[0] = new Pellet(offset, offset);
+  pellets[1] = new Pellet(offset, height-offset);
+  pellets[2] = new Pellet(width-offset, height-offset);
+  pellets[3] = new Pellet(width-offset, offset);
 
   // Adding soundfiles
   collision = new SoundFile(this, "Impact.wav");
@@ -38,14 +39,13 @@ void setup()
 // Draw block
 void draw() 
 {
-  background(51);
+  background(50);
   // Calling method(s) in the PlayerClass
   player.drawPlayer();
-  //player.hasCollidedWithWall();
-  
+
   // Calling method(s) in Wall
   wall.wallDraw();
-  player.wallCollider();
+  player.borderCollider();
   // Adding pellets by calling pellet methods
   for (int i = 0; i < pellets.length; i++)
   {
@@ -56,6 +56,9 @@ void draw()
       pellet.hitPellet();
     }
   }
+  textSize(25);
+  fill(250);
+  text("score = " + points, 25, 25);
 }
 
 // Move controls
@@ -64,16 +67,16 @@ void keyPressed()
   switch(key)
   {
   case 'w':
-    player.playerY = player.playerY - player.speed;
+    player.moveUp();
     break;
   case 'a':
-    player.playerX = player.playerX - player.speed;
+    player.moveLeft();
     break;
   case 's':
-    player.playerY = player.playerY + player.speed;
+    player.moveDown();
     break;
   case 'd':
-    player.playerX = player.playerX + player.speed;
+    player.moveRight();
     break;
   }
 }

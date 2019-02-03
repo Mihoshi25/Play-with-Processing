@@ -4,6 +4,7 @@ class Pellet
   int pelletX;
   int pelletY;
   int peldia = 10;
+  int pelrad = peldia/2;
   boolean collision = false;
 
   // Constructor
@@ -23,7 +24,7 @@ class Pellet
   // Method for checking if the pellet has been hit and adding a point and removing that pellet if it has
   void hitPellet()
   {
-    if((dist(pelletX, pelletY, player.playerX, player.playerY) <= peldia/2+player.pladia/2) && (collision == false))
+    if((dist(pelletX, pelletY, player.playerX, player.playerY) <= pelrad+player.plarad) && (collision == false))
     {
       score.play();
       points = points+1;

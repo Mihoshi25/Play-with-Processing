@@ -59,6 +59,7 @@ void draw()
   textSize(25);
   fill(250);
   text("score = " + points, 25, 25);
+  checkState();
 }
 
 // Move controls

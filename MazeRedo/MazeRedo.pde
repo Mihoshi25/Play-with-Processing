@@ -45,7 +45,7 @@ void draw()
   
   // Calling method(s) in Wall
   wall.wallDraw();
-  wall.wallCollider();
+  player.wallCollider();
   // Adding pellets by calling pellet methods
   for (int i = 0; i < pellets.length; i++)
   {

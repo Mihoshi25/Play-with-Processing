@@ -17,28 +17,6 @@ class Wall
   void wallDraw()
   {
     fill(250);
-   rect(posX, posY, w, h); 
-  }
-  
-  void wallCollider()
-  {
-    
-    if(dist(player.playerX, player.playerY, posX, w) <= player.pladia/2)
-    {
-      collision.play();
-    }
-    else if (dist(player.playerX, player.playerY, posX, h) <= player.pladia/2)
-    {
-      collision.play();
-    }
-    else if(dist(player.playerX, player.playerY, posX+h, w) <= player.pladia/2)
-    {
-      collision.play();
-    }
-    else if(dist(player.playerX, player.playerY, posX+w, h) <= player.pladia/2)
-    {
-      collision.play();
-    }
-    
+   rect(posX, posY, w, h);   
   }
 }

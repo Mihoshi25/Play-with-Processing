@@ -25,6 +25,27 @@ class Player
   // Attempt at wall collision
   void wallCollider()
   {
+    if (playerX-pladia/2 <= 0) 
+    {
+      playerX += bounce;
+      collision.play();
+    }
+    if (playerX+pladia/2 >= width) 
+    {
+      playerX -= bounce;
+      collision.play();
+    }
+
+    if (playerY-pladia/2 <= 0) 
+    {
+      playerY += bounce;
+      collision.play();
+    }
+    if (playerY+pladia/2 >= height) 
+    {
+      playerY -= bounce;
+      collision.play();
+    }
     if (wall.posX + wall.w >= playerX - pladia/2 &&
       wall.posX <= playerX + pladia/2 &&
       wall.posY + wall.h >= playerY - pladia/2 &&
